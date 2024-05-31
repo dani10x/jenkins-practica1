@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'LaclaMaven'
-        jdk 'JDK17'
+        jdk 'JDK_17'
     }
 
     stages {
