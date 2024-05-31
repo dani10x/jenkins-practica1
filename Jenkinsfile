@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('Local Sonar') {
-                    bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=pruebas -Dsonar.sources=src -Dsonar.java.binaries=target/classes"
+                    bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=pruebas -Dsonar.sources=src/main -Dsonar.java.binaries=target/classes"
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage('Quality Gate') {
             steps {
                 script {
-                    timeout(time: 1, unit: 'HOURS') {
+                    timeout(time: 10, unit: 'MINUTES') {
                         waitForQualityGate abortPipeline: true
                     }
                 }
