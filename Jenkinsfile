@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('Local Sonar') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=pruebas -Dsonar.sources=src -Dsonar.java.binaries=target/classes"
+                    bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=pruebas -Dsonar.sources=src -Dsonar.java.binaries=target/classes"
                 }
             }
         }
